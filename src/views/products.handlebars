@@ -1,0 +1,98 @@
+{{>profile1 }}
+
+<div>
+  <H1>ÚLTIMO TICKET DE COMPRA</H1>
+  <h2>TOTAL ÚLTIMA COMPRA: {{totalTicket}}</h2>
+  <ul>
+    {{#each ticket}} 
+
+      <li>
+        Product: {{this.title}} - 
+        Cant: {{this.quantity}} -
+        Precio: {{this.price}} -
+        Total: {{this.total}} 
+      </li>
+    {{/each}}
+  </ul>
+</div>
+<hr>
+<H2>CARRITO DE PRODUCTOS ACTUAL POR PROCESAR</H2>
+ {{selectProducts}}       
+  <ul>
+    {{#each cartCurrent}} 
+
+      <li>
+        Product: {{this.title}} - 
+        Cant: {{this.quantity}} -
+        Precio: {{this.price}} -
+        {{this.stockMessage}}
+
+
+            <!-- form con Id unico igual usando id de producto -->
+          <form id = "formDelete{{this.id}}" action="" method="POST"> 
+            <input type="hidden" name="_method" value="DELETE">
+
+            <button type="submit">Quitar</button>
+          </form>
+          <script>
+              document.querySelector('#formDelete{{this.id}}').addEventListener('submit', function (event) {
+                  event.preventDefault();
+
+                  // Envía la solicitud DELETE al servidor
+                  fetch("../carts/{{this.cartId}}/products/{{this.id}}", {
+                    method: 'DELETE'
+                  })
+                    .then(response => {
+                      // Maneja la respuesta del servidor
+                      location.reload();
+                    })
+                    .catch(error => {
+                      // Maneja errores
+                    });
+                });
+
+          </script>
+      </li>
+    {{/each}}
+  </ul>
+
+  <form action="../carts/{{cart}}/purchase" method="post">
+    <H3>EJECUTAR COMPRA <button type="submit">PURCHASE</button></H3>
+  </form>
+  <hr>
+<H1>Lista de PRODUCTOS</H1>
+
+{{#each payload}}
+  <li>Nombre producto:   {{this.title}}.  Code: {{this.code}}.  Estatus: {{this.status}}.  Stock: {{this.stock}}.  Categoría: {{this.category}}.   Precio: $ {{this.price}}. </li>
+  <form action="{{../cartOwn}}{{this.id}}" method="post">
+    <button type="submit">Add to cart</button>
+  </form>
+  <hr>
+{{/each}}
+<script>
+    let hasNextPage=false;
+    hasNextPage={{hasNextPage}}
+    console.log(hasNextPage);  
+
+</script>
+<div>   
+    {{!-- <p>Tiene página previa: {{hasPrevPage}}</p>
+    <p>Tiene página siguiente: {{hasNextPage}}</p> --}}
+    <h2>Página actual: {{page}}</h2>
+</div>
+
+<div>
+{{#if hasPrevPage}}
+{{!-- <p> Pagina previa es: {{prevPage}}</p> --}}
+<a href="{{prevLink}}"> <button>Anterior</button> </a>
+{{/if}}
+</div>
+
+<div>
+{{#if hasNextPage}}
+{{!-- <p> Pagina siguiente es: {{nextPage}}</p> --}}
+<a href="{{nextLink}}"> <button>Siguiente</button> </a>
+{{/if}}
+</div>
+
+
