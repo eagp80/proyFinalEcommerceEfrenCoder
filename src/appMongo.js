@@ -91,7 +91,7 @@ class AppMongo {
       console.log(`🚀 App con Mongo-Atlas listening on the port ${this.port}`);
       console.log(`===================================================`);
       console.log(`===================================================`);
-      console.log(`Ruta de inicio -------> localhost:${this.port}/api/${this.api_version}`)
+      console.log(`Ruta de inicio **-------> localhost:${this.port}/api/${this.api_version}`)
 
     });
   }
