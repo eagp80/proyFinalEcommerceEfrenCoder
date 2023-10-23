@@ -181,35 +181,54 @@ class ViewsMongoRoutes {
       const lastTicket = await ticketManager.getLastTicketUser(req.session?.user?.email||req.user.user.email);
       console.log("🚀 ~ file: viewsMongo.router.js:182 ~ ViewsMongoRoutes ~ lastTicket:",  lastTicket)
       const arrayLastTicket = [];
-      lastTicket.products.forEach(prod => {
-        return arrayLastTicket.push({
-          title:prod.product.title,
-          price:prod.product.price,
-          quantity:prod.quantity,
-          total:prod.quantity*prod.product.price,
+      let totalTicket = "";
+
+      if(lastTicket==null) {
+        console.log("efreeeen");
+        arrayLastTicket.push({
+        title:"sin compras aún"
+      })} else{
+        lastTicket.products.forEach(prod => {
+          return arrayLastTicket.push({
+            title:prod.product.title,
+            price:prod.product.price,
+            quantity:prod.quantity,
+            total:prod.quantity*prod.product.price,
+          })          
         })
-      	
-      })
+        totalTicket= lastTicket.amount
+      }
+
       //END
 
       //////////////////GET CURRENT CART
       const cartProducts = await this.cartsMongoManager.getCartMongoById(req.user.user.cart)
-     const selectProducts = "Total de productos seleccionados: "+ cartProducts.products.length
-     const cartCurrent = [];
-     let stockMessage = ""
-     cartProducts.products.forEach(prod => {
-      console.log("🚀 ~ file: viewsMongo.router.js:188 ~ ViewsMongoRoutes ~ prod:", prod)
-      stockMessage = prod.quantity>prod.product.stock ? "Sin stock suficiente":"Stock disponible"
-       return cartCurrent.push({
-         title:prod.product.title,
-         price:prod.product.price,
-         quantity:prod.quantity,
-         id:prod.product._id,
-         cartId:cartProducts._id,
-         stockMessage
-       })
-       
-     })
+      console.log("🚀 ~ file: viewsMongo.router.js:201 ~ ViewsMongoRoutes ~ cartProducts:", cartProducts)
+      let selectProducts = "";
+      const cartCurrent = [];
+      
+      if (cartProducts==null) {
+        selectProducts = "Sin productos añadidos, carrito vacío";
+      
+
+        
+      } else {
+        selectProducts = "Total de productos seleccionados: "+ cartProducts.products.length
+        let stockMessage = ""
+        cartProducts.products.forEach(prod => {
+         console.log("🚀 ~ file: viewsMongo.router.js:188 ~ ViewsMongoRoutes ~ prod:", prod)
+         stockMessage = prod.quantity>prod.product.stock ? "Sin stock suficiente":"Stock disponible"
+          return cartCurrent.push({
+            title:prod.product.title,
+            price:prod.product.price,
+            quantity:prod.quantity,
+            id:prod.product._id,
+            cartId:cartProducts._id,
+            stockMessage
+          })          
+        })        
+      }
+
            ///////////////END
 
 
@@ -225,7 +244,7 @@ class ViewsMongoRoutes {
           cartCurrent:cartCurrent,
           selectProducts:selectProducts,
           ticket: arrayLastTicket,
-          totalTicket: lastTicket.amount,
+          totalTicket: totalTicket,
           totalPages: totalPages,
           prevPage: prevPage,
           nextPage: nextPage,
@@ -243,12 +262,12 @@ class ViewsMongoRoutes {
           cartOwn: cartOwn,
         })
       } catch (error) {
+        console.log(error);
         req.logger.fatal(
           `Method: ${req.method}, url: ${
             req.url
           } - time: ${new Date().toLocaleTimeString()
-          } con ERROR: ${error.message}`); 
-
+          } con ERROR: ${error}`);      
       }
     });
     

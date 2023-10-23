@@ -324,7 +324,7 @@ class CartController {
     // Si tiene existencia suficiente: lo sumo al monto total de la compra, actualizo la existencia, y lo elimino del carrito.
     // Si no tiene existencia suficiente agrego al producto al arreglo de "outOfStock"
     for (const element of cart.products) {
-      if ( element.product.stock > element.quantity ) {
+      if ( element.product.stock >= element.quantity ) {
         purchaseAmount += element.quantity * element.product.price
         await this.productMongoManager.updateProduct(element.product._id, {
           stock: element.product.stock - element.quantity

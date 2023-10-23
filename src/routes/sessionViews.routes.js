@@ -20,7 +20,7 @@ class SessionViewsRoutes {
     this.initSessionViewsRoutes();
   }
   initSessionViewsRoutes(){
-    // ****** rutas directas ejemplo http://localhost:8000/api/v1/login
+    // ****** rutas directas ejemplo http://localhost:8080/api/v1/login
 
     this.router.get(`${this.path}`, async (req, res) =>{
       return res.redirect(`/api/${API_VERSION}/login`);

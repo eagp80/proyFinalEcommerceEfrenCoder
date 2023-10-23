@@ -12,3 +12,10 @@ fatal: Method: GET, url: /loggerTest/fatal - time: 8:57:55 p. m.
          con ERROR:  - Error Fatal en GET , NOS TUMBA LA API
 fatal: Method: GET, url: /loggerTest/fatal - time: 9:01:35 p. m. con ERROR:  - Error Fatal en GET , NOS TUMBA LA API
 error: Method: GET, url: /loggerTest/error - time: 9:02:14 p. m.
+fatal: Method: GET, url: /views/products - time: 4:58:52 p. m. con ERROR: Cannot read properties of null (reading 'products')
+fatal: Method: GET, url: /views/products - time: 4:59:51 p. m. con ERROR: Cannot read properties of null (reading 'products')
+fatal: Method: GET, url: /views/products - time: 4:59:57 p. m. con ERROR: Cannot read properties of null (reading 'products')
+fatal: Method: GET, url: /views/products - time: 5:03:29 p. m. con ERROR: Cannot read properties of null (reading 'products')
+fatal: Method: GET, url: /views/products - time: 5:09:18 p. m. con ERROR: TypeError: Cannot read properties of null (reading 'products')
+fatal: Method: GET, url: /views/products - time: 5:09:54 p. m. con ERROR: TypeError: Cannot read properties of null (reading 'products')
+fatal: Method: GET, url: /views/products - time: 5:17:53 p. m. con ERROR: TypeError: Cannot read properties of null (reading 'products')

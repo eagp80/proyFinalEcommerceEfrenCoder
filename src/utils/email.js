@@ -217,7 +217,7 @@ export const emailRefreshPassword = async (user, token) => {
                     <tr>
                       <td valign="middle" align="left" class="andes-emails-logo-content-td"
                         style="width: 100%; max-width: 520px; padding-top: 24px; padding-bottom: 20px;">
-                        <a href="http://localhost:8000/api/v1/login" target="_blank"
+                        <a href="http://localhost:8080/api/v1/login" target="_blank"
                           rel="noopener noreferrer" title="Ir a Mercado libre"
                           style="text-decoration: none; display: block;">
                           <img height="32" decoding="async"
@@ -302,7 +302,7 @@ export const emailRefreshPassword = async (user, token) => {
                                     <td
                                       style="font-family: 'Proxima Nova', Helvetica, Arial ,sans-serif;font-size: 14px; color:#fff;">
                                       <a class=mail__button
-                                        href="http://localhost:8000/api/v1/set-new-password/${token}"
+                                        href="http://localhost:8080/api/v1/set-new-password/${token}"
                                         target="_blank"
                                         style="
                                           text-decoration:none;

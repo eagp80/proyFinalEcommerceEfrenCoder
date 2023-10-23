@@ -32,7 +32,7 @@ const passportCall = (strategy) => {
       if (!user) {
         return res.status(401).json({
           error: info.messages ? info.messages : info.toString(),
-          message: `error in jwt***`,//ojo...
+          message: `error en jwt, debe loguearse`,//ojo...
         });
       }
       console.log("autenticando user:",{user});

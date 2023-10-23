@@ -23,7 +23,7 @@ class AppMongo {
   constructor(routes) {
     this.appMongo = express();
     this.env = NODE_ENV || "development";//si NODE_ENV no esta definido tomar "development"
-    this.port = PORT || 8000;
+    this.port = PORT || 8080;
     this.db_cnn = DB_CNN;
     this.api_version = API_VERSION;
 
