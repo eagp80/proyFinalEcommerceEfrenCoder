@@ -44,21 +44,13 @@ class EmailRoutes {
                     <img src = "cid:marketing" />
                 </div>
                 `,
-                attachments: [
-                  {
-                    filename: "marketing.jpeg",
-                    path: `${process.cwd()}` + `/src/public/img/marketing.jpeg`,
-                    cid: "marketing",
-                  },
-                  {
-                    filename: "products.json",
-                    path: `${process.cwd()}` + `/files/products.json`,
-                  },
-                  {
-                    filename: "rutas y vistas login.png",
-                    path: `${process.cwd()}` + `/imagenes explicativas/rutas y vistas login.png`,
-                  },
-                ],
+                // attachments: [
+                //   {
+                //     filename: "marketing.jpeg",
+                //     path: `${process.cwd()}` + `/src/public/img/marketing.jpeg`,
+                //     cid: "marketing",
+                //   }
+                // ],
             })
             console.log("🚀 ~ file: email.routes.js:46 ~ EmailRoutes ~ this.router.post ~ result:", result)
             return res.send({ok: true, message: `email  send to ${body.email}`})
