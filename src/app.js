@@ -8,7 +8,6 @@ import cookieParser from "cookie-parser";
 import { NODE_ENV, PORT, API_VERSION, CURSO } from "./config/config.js";
 import { mongoDBConnection } from "./db/mongo.config.js";
 import handlebars from "express-handlebars";
-import ProductManager from './dao/managers/productManager.js'
 
 import productsRouter from './routes/products.router.js';
 import cartsRouter from './routes/carts.router.js';
