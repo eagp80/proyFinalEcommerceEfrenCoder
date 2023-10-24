@@ -2,7 +2,7 @@ import { Router } from "express";
 import CartsMongoManager from "../dao/managers/cartMongo.manager.js";
 import ProductsMongoManager from "../dao/managers/productMongo.manager.js";
 import productMongoModel from "../dao/models/productsMongo.models.js";
-import { NODE_ENV, PORT, API_VERSION, CURSO } from "../config/config.js";
+import { NODE_ENV, PORT, API_VERSION, CURSO, URL_API } from "../config/config.js";
 import { passportCall } from "../utils/jwt.js";
 import handlePolicies from "../middleware/handle-policies.middleware.js";
 import { HttpResponse } from "../middleware/error-handler.js";
@@ -136,7 +136,7 @@ class ViewsMongoRoutes {
         let sString = "";
         let url1="";
         let url2="";
-        let cartOwn = `http://localhost:${PORT}/api/${API_VERSION}/carts/${cartUser}/products/`;
+        let cartOwn = `http://${URL_API}:${PORT}/api/${API_VERSION}/carts/${cartUser}/products/`;
 
         if (sort) {
           s = JSON.parse(sort);
@@ -150,26 +150,26 @@ class ViewsMongoRoutes {
           await productMongoModel.paginate(q, { limit, page, sort: s, lean: true });      
 
           if (!query && sort) {            
-            url1=`http://localhost:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${prevPage}&sort=${sString}`;
-            url2=`http://localhost:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${nextPage}&sort=${sString}`;
+            url1=`http://${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${prevPage}&sort=${sString}`;
+            url2=`http://${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${nextPage}&sort=${sString}`;
           }
 
           
           if (query && !sort) {
             let qStringURI = encodeURIComponent(qString);
-            url1=`http://localhost:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${prevPage}&query=${qStringURI}`;
-            url2=`http://localhost:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${nextPage}&query=${qStringURI}`;
+            url1=`http://${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${prevPage}&query=${qStringURI}`;
+            url2=`http://${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${nextPage}&query=${qStringURI}`;
           }
 
           if (!query && !sort) {
-            url1=`http://localhost:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${prevPage}`;
-            url2=`http://localhost:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${nextPage}`;
+            url1=`http://${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${prevPage}`;
+            url2=`http://${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${nextPage}`;
           }        
 
           if (query && sort) {
             let qStringURI = encodeURIComponent(qString);
-            url1 = `http://localhost:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${prevPage}&sort=${sort}&query=${qStringURI}`
-            url2 = `http://localhost:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${nextPage}&sort=${sort}&query=${qStringURI}`
+            url1 = `http://${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${prevPage}&sort=${sort}&query=${qStringURI}`
+            url2 = `http://${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${nextPage}&sort=${sort}&query=${qStringURI}`
         }
 
       if (req.session.user?.email === "adminCoder@coder.com") {

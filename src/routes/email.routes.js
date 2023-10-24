@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { API_VERSION,EMAIL, PSW_MAIL } from "../config/config.js";
+import { API_VERSION,EMAIL, PSW_MAIL, URL_API } from "../config/config.js";
 import passport from "passport";
 import { passportCall } from "../utils/jwt.js";
 import handlePolicies from "../middleware/handle-policies.middleware.js";
@@ -28,7 +28,7 @@ class EmailRoutes {
     this.initEmailRoutes();
   }
   initEmailRoutes(){
-    // ****** rutas directas ejemplo http://localhost:8080/api/v1/mail
+    // ****** rutas directas ejemplo http://${URL_API}:8080/api/v1/mail
 
     this.router.post(`${this.path}/send`, async (req, res) =>{
         const body = req.body;

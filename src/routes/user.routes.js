@@ -4,7 +4,7 @@ import userModel from "../dao/models/user.model.js";
 import { passportCall } from "../utils/jwt.js";
 import handlePolicies from "../middleware/handle-policies.middleware.js";
 
-import { API_VERSION } from "../config/config.js";
+import { API_VERSION, URL_API } from "../config/config.js";
 import { createHashValue, isValidPasswd } from "../utils/encrypt.js";
 import passport from "passport";
 import { HttpResponse } from "../middleware/error-handler.js";

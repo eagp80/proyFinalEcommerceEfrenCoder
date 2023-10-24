@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 
 //const cors = require("cors");
-import { NODE_ENV, PORT, API_VERSION, CURSO } from "./config/config.js";
+import { NODE_ENV, PORT, API_VERSION, CURSO, URL_API } from "./config/config.js";
 import { mongoDBConnection } from "./db/mongo.config.js";
 import handlebars from "express-handlebars";
 

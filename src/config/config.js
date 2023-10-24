@@ -21,7 +21,8 @@ const {
   SECRET_SESSION,  
   SECRET_JWT,
   EMAIL,
-  PSW_MAIL
+  PSW_MAIL,
+  URL_API
 } = process.env;
 
 export {
@@ -41,5 +42,6 @@ export {
   SECRET_SESSION,
   SECRET_JWT,
   EMAIL,
-  PSW_MAIL
+  PSW_MAIL,
+  URL_API
 };

@@ -7,7 +7,7 @@ import cartsMongoModel from "../dao/models/cartsMongo.models.js";
 import userModel from "../dao/models/user.model.js";
 import ticketsManager from "../dao/managers/tickets.manager.js";
 import { Schema, model, Types } from "mongoose";
-import { API_VERSION, PORT } from "../config/config.js";
+import { API_VERSION, PORT, URL_API } from "../config/config.js";
 const { ObjectId } = Types;
 
 
@@ -255,7 +255,7 @@ class CartController {
                 });          
           }// fin else de situacion 4
       }//fin else del if 2, situacion 3
-      return res.redirect(`http://localhost:${PORT}/api/${API_VERSION}/views/products`);
+      return res.redirect(`http://${URL_API}:${PORT}/api/${API_VERSION}/views/products`);
       //return this.httpResp.OK(res,`cart found successfully and update in Mongo Atlas`,{cartMongoData});
 
     } catch (error) {
@@ -363,7 +363,7 @@ class CartController {
       //return this.httpResp.OK(res,'Purchase submitted, The following products are out of stock:',{outOfStock, ticket});
     }
     // Si todos los productos tenian stock
-    return res.redirect(`http://localhost:${PORT}/api/${API_VERSION}/views/products`);    
+    return res.redirect(`http://${URL_API}:${PORT}/api/${API_VERSION}/views/products`);    
     //return httpResp.OK(res,'Purchase submitted, ticket:',ticket);
     } catch (error) {
       req.logger.fatal(

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { passportCall } from "../utils/jwt.js";
 import handlePolicies from "../middleware/handle-policies.middleware.js";
-import { API_VERSION } from "../config/config.js";
+import { API_VERSION, URL_API } from "../config/config.js";
 import { HttpResponse } from "../middleware/error-handler.js";
 const httpResp  = new HttpResponse;
 

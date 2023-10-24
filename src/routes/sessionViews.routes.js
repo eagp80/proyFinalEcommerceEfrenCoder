@@ -1,7 +1,7 @@
 import { Router } from "express";
 import userModel from "../dao/models/user.model.js";
 import session from "express-session";
-import { API_VERSION } from "../config/config.js";
+import { API_VERSION, URL_API } from "../config/config.js";
 import passport from "passport";
 import { passportCall } from "../utils/jwt.js";
 import handlePolicies from "../middleware/handle-policies.middleware.js";
@@ -20,7 +20,7 @@ class SessionViewsRoutes {
     this.initSessionViewsRoutes();
   }
   initSessionViewsRoutes(){
-    // ****** rutas directas ejemplo http://localhost:8080/api/v1/login
+    // ****** rutas directas ejemplo http://${URL_API}:8080/api/v1/login
 
     this.router.get(`${this.path}`, async (req, res) =>{
       return res.redirect(`/api/${API_VERSION}/login`);

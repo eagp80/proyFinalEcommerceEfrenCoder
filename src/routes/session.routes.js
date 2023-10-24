@@ -1,7 +1,7 @@
 import { Router } from "express";
 import userModel from "../dao/models/user.model.js";
 import session from "express-session";
-import { API_VERSION, SECRET_JWT } from "../config/config.js";
+import { API_VERSION, SECRET_JWT, URL_API } from "../config/config.js";
 import { createHashValue, isValidPasswd } from "../utils/encrypt.js";
 import passport from "passport";
 import { generateJWT } from "../utils/jwt.js";
