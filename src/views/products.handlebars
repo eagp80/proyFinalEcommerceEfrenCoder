@@ -64,7 +64,7 @@
 
 {{#each payload}}
   <li>Nombre producto:   {{this.title}}.  Code: {{this.code}}.  Estatus: {{this.status}}.  Stock: {{this.stock}}.  Categoría: {{this.category}}.   Precio: $ {{this.price}}. </li>
-  <form action="{{../cartOwn}}{{this.id}}" method="post">
+  <form action="../carts/{{cart}}/products/{{this.id}}" method="post">
     <button type="submit">Add to cart</button>
   </form>
   <hr>
