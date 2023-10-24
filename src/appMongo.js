@@ -11,7 +11,7 @@ import mongoStore from "connect-mongo";
 import passport from "passport";
 import initializePassport from "./config/passport.config.js";
 import { setLogger } from "./utils/logger.js";
-
+const MONGO_CNN = process.env.DB_CNN;
 class AppMongo {
   appMongo;//referencia
   env;//ambiente
@@ -56,7 +56,7 @@ class AppMongo {
     this.appMongo.use(
       session({
         store: mongoStore.create({
-          mongoUrl: DB_CNN,
+          mongoUrl: MONGO_CNN,
           mongoOptions: { useNewUrlParser: true, useUnifiedTopology: true },
           ttl: 120
         }),
