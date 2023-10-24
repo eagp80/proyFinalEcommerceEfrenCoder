@@ -255,7 +255,7 @@ class CartController {
                 });          
           }// fin else de situacion 4
       }//fin else del if 2, situacion 3
-      return res.redirect(`http://${URL_API}:${PORT}/api/${API_VERSION}/views/products`);
+      return res.redirect(`${URL_API}:${PORT}/api/${API_VERSION}/views/products`);
       //return this.httpResp.OK(res,`cart found successfully and update in Mongo Atlas`,{cartMongoData});
 
     } catch (error) {
@@ -363,7 +363,7 @@ class CartController {
       //return this.httpResp.OK(res,'Purchase submitted, The following products are out of stock:',{outOfStock, ticket});
     }
     // Si todos los productos tenian stock
-    return res.redirect(`http://${URL_API}:${PORT}/api/${API_VERSION}/views/products`);    
+    return res.redirect(`${URL_API}:${PORT}/api/${API_VERSION}/views/products`);    
     //return httpResp.OK(res,'Purchase submitted, ticket:',ticket);
     } catch (error) {
       req.logger.fatal(

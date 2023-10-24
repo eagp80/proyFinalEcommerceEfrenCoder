@@ -136,7 +136,7 @@ class ViewsMongoRoutes {
         let sString = "";
         let url1="";
         let url2="";
-        let cartOwn = `http://${URL_API}:${PORT}/api/${API_VERSION}/carts/${cartUser}/products/`;
+        let cartOwn = `${URL_API}:${PORT}/api/${API_VERSION}/carts/${cartUser}/products/`;
 
         if (sort) {
           s = JSON.parse(sort);
@@ -150,26 +150,26 @@ class ViewsMongoRoutes {
           await productMongoModel.paginate(q, { limit, page, sort: s, lean: true });      
 
           if (!query && sort) {            
-            url1=`http://${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${prevPage}&sort=${sString}`;
-            url2=`http://${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${nextPage}&sort=${sString}`;
+            url1=`${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${prevPage}&sort=${sString}`;
+            url2=`${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${nextPage}&sort=${sString}`;
           }
 
           
           if (query && !sort) {
             let qStringURI = encodeURIComponent(qString);
-            url1=`http://${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${prevPage}&query=${qStringURI}`;
-            url2=`http://${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${nextPage}&query=${qStringURI}`;
+            url1=`${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${prevPage}&query=${qStringURI}`;
+            url2=`${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${nextPage}&query=${qStringURI}`;
           }
 
           if (!query && !sort) {
-            url1=`http://${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${prevPage}`;
-            url2=`http://${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${nextPage}`;
+            url1=`${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${prevPage}`;
+            url2=`${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${nextPage}`;
           }        
 
           if (query && sort) {
             let qStringURI = encodeURIComponent(qString);
-            url1 = `http://${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${prevPage}&sort=${sort}&query=${qStringURI}`
-            url2 = `http://${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${nextPage}&sort=${sort}&query=${qStringURI}`
+            url1 = `${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${prevPage}&sort=${sort}&query=${qStringURI}`
+            url2 = `${URL_API}:${PORT}/api/${API_VERSION}/views/products?limit=${limit}&page=${nextPage}&sort=${sort}&query=${qStringURI}`
         }
 
       if (req.session.user?.email === "adminCoder@coder.com") {

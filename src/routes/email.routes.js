@@ -28,7 +28,7 @@ class EmailRoutes {
     this.initEmailRoutes();
   }
   initEmailRoutes(){
-    // ****** rutas directas ejemplo http://${URL_API}:8080/api/v1/mail
+    // ****** rutas directas ejemplo ${URL_API}:8080/api/v1/mail
 
     this.router.post(`${this.path}/send`, async (req, res) =>{
         const body = req.body;
