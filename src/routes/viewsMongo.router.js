@@ -136,7 +136,9 @@ class ViewsMongoRoutes {
         let sString = "";
         let url1="";
         let url2="";
-        let cartOwn = `${URL_API}:${PORT}/api/${API_VERSION}/carts/${cartUser}/products/`;
+        // let cartOwn = `${URL_API}:${PORT}/api/${API_VERSION}/carts/${cartUser}/products/`;
+        let cartOwn = `../carts/${cartUser}/products/`;
+
 
         if (sort) {
           s = JSON.parse(sort);
