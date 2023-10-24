@@ -3,7 +3,7 @@ import passport from "passport";
 import local from "passport-local";
 import GithubStrategy from "passport-github2";
 import userModel  from "../dao/models/user.model.js";
-import { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET} from "./config.js"
+import { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, URL_API, PORT} from "./config.js"
 import { createHashValue, isValidPasswd } from "../utils/encrypt.js";
 import jwt from "passport-jwt";
 import ROLES from "../constantes/role.js";
@@ -99,7 +99,7 @@ const initializePassport = () => {
       {
         clientID: GITHUB_CLIENT_ID,
         clientSecret: GITHUB_CLIENT_SECRET,
-        callbackURL: "${URL_API}:8080/api/v1/session/githubcallback",
+        callbackURL: `${URL_API}:${PORT}/api/v1/session/githubcallback`,
       },
       async (accessToken, refreshToken, profile, done) => {
         try {
