@@ -9,8 +9,8 @@ import { NODE_ENV, PORT, API_VERSION, CURSO } from "./config/config.js";
 import { mongoDBConnection } from "./db/mongo.config.js";
 import handlebars from "express-handlebars";
 
-import productsRouter from './routes/products.router.js';
-import cartsRouter from './routes/carts.router.js';
+//import productsRouter from './routes/products.router.js';
+//import cartsRouter from './routes/carts.router.js';
 import viewsRouter from './routes/views.router.js';
 import ViewsMongoRoutes from './routes/viewsMongo.router.js'
 import ProductsMongoRoute from './routes/productsMongo.router.js';
