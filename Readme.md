@@ -1,5 +1,5 @@
 
-# CORRESPONDE  A ENTREGABLE CLASE 41 Modulos De Testing Para El Proyecto Final
+# CORRESPONDE  A Proyecto Final Ecomerce
 ###  RUTAS
         - Ruta de inicio, de entrada a la api (redirige al login): 
         http://localhost:8080/api/v1/
