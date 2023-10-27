@@ -1,5 +1,5 @@
 {
-  "name": "proyectofinalecomerceefren",
+  "name": "proyecto-final-ecommerce-efren",
   "version": "2.0.0",
   "description": "ecomerce productos y carritos y chat con express, handlebarts y mongo atlas",
   "description2": "cross-env es para setear variables de entorno independientemente del sistema operativo",

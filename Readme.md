@@ -1,5 +1,5 @@
 
-# CORRESPONDE  A Proyecto Final Ecomerce
+# Corresponde a Proyecto Final E-commerce
 ###  RUTAS
         - Ruta de inicio, de entrada a la api (redirige al login): 
         http://localhost:8080/api/v1/
@@ -16,7 +16,7 @@
         - Ruta de usuario actual logueado por id (muestra usuario examinando BD en Mongo Atlas):
         http://localhost:8080/api/v1/session/current/:uid
 
-###  SERVIDOR DE PRODUCTOS Y CARRITOS CON EXPRESS, VISTAS CON EXPRESS-HANDLEBARS, BASE DE DATOS MANEJADA CON MONGOOSE HACIA MONGO ATLAS (PRONTO TENDRÁ WEBSOCKET PARA CHAT CON SOCKETS.IO). 
+###  E-COMMERCE, SERVIDOR DE PRODUCTOS, CARRITOS, USUARIOS, TICKETS DE COMPRA, SESIONES Y VISTAS CON EXPRESS, VISTAS CON EXPRESS-HANDLEBARS, BASE DE DATOS MANEJADA CON MONGOOSE HACIA MONGO ATLAS (PRONTO TENDRÁ WEBSOCKET PARA CHAT CON SOCKETS.IO). 
 ### ADEMÁS TIENE: MANEJO DE VARIABLES DE ENTORNO CON dotenv CAMBIO DE VARIABLES DE ENTORNO DURANTE EJECUCIÓN CON cross-env, SE MUESTRAN RUTAS EN TABLA EN CONSOLA LADO BACKEND CON express-routemap, (PRONTO TENDRÁ MANEJO DE ARCHIVOS CON MULTER).
 
 ### Como usar la app:
@@ -45,8 +45,8 @@
 
         Para la paginación desde mongo atlas con limit, sort y query (método GET):
         http://localhost:8080/api/v1/views/products?page=1&limit=3&sort={"code":1}&query={"description": "Desde fromulario con socket"}
-## Consigna. Se está requiriendo lo siguiente:
-- Realizar módulos de testing para tu proyecto principal, utilizando los módulos de mocha + chai + supertest.
+## Consigna. Se está requiriendo lo siguiente para parte final del proyecto:
+- 
 
 ### TESTEO:
 - 
@@ -55,19 +55,18 @@
 ### Formato
 
 - Link al repositorio de Github con el proyecto completo, sin la carpeta de node_modules. ((Hecho)).
+- Link al pryecto desplegado ((Hecho con railway))
+    https://ecommerceefrencoder.up.railway.app/api/v1/login
 
 ### Sugerencias
-- Ya que el testing lo desarrollarás tú, no hay una guía de test por leer. ¡Aplica tu mayor creatividad en tus pruebas! 
+- Presta especial atención a las rúbricas de Proyecto final. ¡Es crucial para alcanzar la nota que esperas!
+- Debido a la complejidad de frontend requerida para poder aplicar una pasarela de pago, el PF no evalúa la pasarela de pago.
 
 ### Aspectos a incluir
-- Se deben incluir por lo menos 3 tests desarrollados para:
-    - Router de products.
-    - Router de carts.
-    - Router de sessions.
-- NO desarrollar únicamente tests de status, la idea es trabajar lo mejor desarrollado posible las validaciones de testing.
+- 
 
 
-## Rutas para servidor con file-system en puerto 8081 (se deshabilito, es decir, se comentó en el código):
+## Rutas para servidor con file-system en puerto 8081 (se eliminó del código para enfocar todo a Mongo-Atlas):
 
 - Carritos: (se deshabilitó, es decir, se comentó en el código):
     - /api/carts/:cid   GET_BY_CID  trae carrito cid en formato JSON.
@@ -91,11 +90,14 @@
 # Rutas carritos con Mongo:
 
 - Ver la imagen en carpeta: imagenes explicativas.
+- Ver encabezado HTML al entrar a la API.
 
 # Rutas productos con Mongo:
 
 -  Ver la imagen carpeta: imagenes explicativas.
+- Ver encabezado HTML al entrar a la API.
 
 # Rutas de  views (carritos y productos) con Mongo: 
 
 - Ver la iamgen en carpeta carpeta: imagenes explicativas.
+- Ver encabezado HTML al entrar a la API.
