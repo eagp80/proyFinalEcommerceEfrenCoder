@@ -1,8 +1,31 @@
 
-# Corresponde a Proyecto Final E-commerce
+# Corresponde a Proyecto Final Backend de una aplicación E-commerce.
 ###  RUTAS
         - Ruta de inicio, de entrada a la api (redirige al login): 
         http://localhost:8080/api/v1/
+
+        - Para recuperar contraseña, entrar a ruta de arriba, clic en boton donde dice Ir a formulario de restauración de contraseña.
+
+        - Ruta para crear ticket de compra (metodo POST, con postman) http://localhost:8080/api/v1/carts/:cid/purchase Tambien se hace la compra dando clic al boton PURCHASE en la vista http://localhost:8080/api/v1/views/products
+
+
+        - Ruta para cambiar role de usuario de USER a PREMIUM y viceversa:
+        http://localhost:8080/api/v1/users/premium/:uid
+
+        - Ruta para crear producto:
+        Se debe ser PREMIUM , se loguea desde POSTMAN, se copia el token en authorization, bear token, desde POSTMAN se crea producto metodo POST a la ruta http://localhost:8080/api/v1/products/, pegando el token en authorization, bear token, y escribiendo los clave:valor de producto en el body, raw, JSON. El servidor creara el producto con la propiedad owner: email del usuario que lo creo.
+
+        - Ruta eliminar y actualizar producto solo las pueden acceder ADMIN o PREMIUM, el owner de un producto y ADMIN son quienes pueden eliminar y actualizar un producto, las rutas son:
+        Desde POSTMAN metodo DELETE  http://localhost:8080/api/v1/products/:pidmetodo metodo PUT http://localhost:8080/api/v1/products/:pid, respectivamente.
+
+        - Ruta para agregar producto a carrito siendo PREMIUM:
+        debe loguearse desde navegador, aparece vista de productos debe  agregar un producto credao por ese usuario al carrito se vera que no deja agregarlo.
+
+        -  Deberá loguearse en localhost:8080/api/v1 para realizar pruebas de logger con winston.
+
+        - Las rutas para las pruebas de logger con winston son (localhost:8080) api/v1/loggerTest/fatal, 
+                api/v1/loggerTest/error, api/v1/loggerTest/warning, api/v1/loggerTest/info, api/v1/loggerTest/http, 
+                api/v1/loggerTest/debug 
 
         - Ruta de mocking, generando 50 productos con faker en localhost:8081/mockingproducts.
 
@@ -16,7 +39,7 @@
         - Ruta de usuario actual logueado por id (muestra usuario examinando BD en Mongo Atlas):
         http://localhost:8080/api/v1/session/current/:uid
 
-###  E-COMMERCE, SERVIDOR DE PRODUCTOS, CARRITOS, USUARIOS, TICKETS DE COMPRA, SESIONES Y VISTAS CON EXPRESS, VISTAS CON EXPRESS-HANDLEBARS, BASE DE DATOS MANEJADA CON MONGOOSE HACIA MONGO ATLAS (PRONTO TENDRÁ WEBSOCKET PARA CHAT CON SOCKETS.IO). 
+###  BACKEND DE UNA APLICACION E-COMMERCE: SERVIDOR DE PRODUCTOS, CARRITOS, USUARIOS, TICKETS DE COMPRA, SESIONES Y VISTAS CON EXPRESS, VISTAS CON EXPRESS-HANDLEBARS, BASE DE DATOS MANEJADA CON MONGOOSE HACIA MONGO ATLAS (PRONTO TENDRÁ WEBSOCKET PARA CHAT CON SOCKETS.IO). 
 ### ADEMÁS TIENE: MANEJO DE VARIABLES DE ENTORNO CON dotenv CAMBIO DE VARIABLES DE ENTORNO DURANTE EJECUCIÓN CON cross-env, SE MUESTRAN RUTAS EN TABLA EN CONSOLA LADO BACKEND CON express-routemap, (PRONTO TENDRÁ MANEJO DE ARCHIVOS CON MULTER).
 
 ### Como usar la app:
@@ -46,7 +69,9 @@
         Para la paginación desde mongo atlas con limit, sort y query (método GET):
         http://localhost:8080/api/v1/views/products?page=1&limit=3&sort={"code":1}&query={"description": "Desde fromulario con socket"}
 ## Consigna. Se está requiriendo lo siguiente para parte final del proyecto:
-- 
+- Completar el proyecto final.
+    - Conseguir una experiencia de compra completa. ((Hecho)).
+    - Cerrar detalles administrativos con los roles. ((Hecho)).
 
 ### TESTEO:
 - 
@@ -63,7 +88,22 @@
 - Debido a la complejidad de frontend requerida para poder aplicar una pasarela de pago, el PF no evalúa la pasarela de pago.
 
 ### Aspectos a incluir
-- 
+- Desde el router de /api/users, crear tres rutas:
+    - GET  /  deberá obtener todos los usuarios, éste sólo debe devolver los datos principales como nombre, correo, tipo de cuenta (rol).
+
+q   - DELETE / deberá limpiar a todos los usuarios que no hayan tenido conexión en los últimos 2 días. (puedes hacer pruebas con los últimos 30 minutos, por ejemplo). Deberá enviarse un correo indicando al usuario que su cuenta ha sido eliminada por inactividad.
+
+    - Crear una vista para poder visualizar, modificar el rol y eliminar un usuario. Esta vista únicamente será accesible para el administrador del ecommerce.
+
+- Modificar el endpoint que elimina productos, para que, en caso de que el producto pertenezca a un usuario premium, le envíe un correo indicándole que el producto fue eliminado.
+
+- Finalizar las vistas pendientes para la realización de flujo completo de compra. NO ES NECESARIO tener una estructura específica de vistas, sólo las que tú consideres necesarias para poder llevar a cabo el proceso de compra. ((Hecho)).
+
+- No es necesario desarrollar vistas para módulos que no influyan en el proceso de compra (Como vistas de usuarios premium para crear productos, o vistas de panel de admin para updates de productos, etc). ((Hecho)).
+
+
+- Realizar el despliegue de tu aplicativo en la plataforma de tu elección (Preferentemente Railway.app, pues es la abarcada en el curso) y corroborar que se puede llevar a cabo un proceso de compra completo. ((Hecho)).
+
 
 
 ## Rutas para servidor con file-system en puerto 8081 (se eliminó del código para enfocar todo a Mongo-Atlas):
