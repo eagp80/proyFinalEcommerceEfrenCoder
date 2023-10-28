@@ -4,13 +4,16 @@
         - Ruta de inicio, de entrada a la api (redirige al login): 
         http://localhost:8080/api/v1/
 
+        - Ruta para obtener todos los usuarios: 
+        Metodo GET http://localhost:8080/api/v1/users  (solo ADMIN está autorizado)
+
         - Para recuperar contraseña, entrar a ruta de arriba, clic en boton donde dice Ir a formulario de restauración de contraseña.
 
         - Ruta para crear ticket de compra (metodo POST, con postman) http://localhost:8080/api/v1/carts/:cid/purchase Tambien se hace la compra dando clic al boton PURCHASE en la vista http://localhost:8080/api/v1/views/products
 
 
         - Ruta para cambiar role de usuario de USER a PREMIUM y viceversa:
-        http://localhost:8080/api/v1/users/premium/:uid
+        Metodo GET http://localhost:8080/api/v1/users/premium/:uid  Solo ADMIN esta autorizado.
 
         - Ruta para crear producto:
         Se debe ser PREMIUM , se loguea desde POSTMAN, se copia el token en authorization, bear token, desde POSTMAN se crea producto metodo POST a la ruta http://localhost:8080/api/v1/products/, pegando el token en authorization, bear token, y escribiendo los clave:valor de producto en el body, raw, JSON. El servidor creara el producto con la propiedad owner: email del usuario que lo creo.

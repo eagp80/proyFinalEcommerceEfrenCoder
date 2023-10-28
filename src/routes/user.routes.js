@@ -9,7 +9,7 @@ import { createHashValue, isValidPasswd } from "../utils/encrypt.js";
 import passport from "passport";
 import { HttpResponse } from "../middleware/error-handler.js";
 const httpResp  = new HttpResponse;
-//********* /api/v1/current/
+//********* /api/v1/users/
 
 class UserRoutes {//no es un Router pero adentro tiene uno
   path = "/users";
@@ -21,15 +21,45 @@ class UserRoutes {//no es un Router pero adentro tiene uno
   }
 
   initUserRoutes() {//  api/v1/current/
-    this.router.get(`${this.path}/current`, 
+    this.router.get(
+    `${this.path}/current`, 
     [passportCall("jwt"), handlePolicies(["USER","ADMIN" ,"PREMIUM"])],    
     (req, res) =>{      
         return res.send(req.user); 
     });
     // USER, ADMINS
+
+    this.router.get(//get all users
+      `${this.path}`,
+      handlePolicies([ "ADMIN"]),
+      async (req,res) => {
+        try {  
+          const usersAll = await userModel.find();
+          const usersAllArray=[];
+          console.log("🚀 ~ file: user.routes.js:38 ~ UserRoutes ~ usersAll:", usersAll);
+          usersAll.forEach(element => {
+            const elementData={
+            first_name:element.first_name ,
+            email:element.email,
+            role: element.role
+            };
+            usersAllArray.push(elementData);           
+            
+          });
+        
+          return httpResp.OK(res, `get all users succesfully`, {usersAllArray});      
+        } catch (error) {
+          req.logger.fatal(
+            `Method: ${req.method}, url: ${
+              req.url
+            } - time: ${new Date().toLocaleTimeString()
+            } con ERROR: ${error.message}`);  
+          return httpResp.Error(res, `error en router get all users`, error.message);
+        }
+      })
     this.router.get(
         `${this.path}/:uid`, 
-        handlePolicies(["USER", "ADMIN","PREMIUM", "GOLD", "SILVER", "BRONCE"]),
+        handlePolicies(["USER", "ADMIN","PREMIUM"]),
         async (req, res) =>{        
         try{
             const { uid } = req.params;
@@ -49,8 +79,8 @@ class UserRoutes {//no es un Router pero adentro tiene uno
           } con ERROR: ${error.message}`);      
       } 
     });
-    // TODO: eso solo deberia hacerlo el ADMIN
-    this.router.delete(`${this.path}/current/:uid`,
+    this.router.delete(//delete user by Id
+    `${this.path}/:uid`,
     handlePolicies(["ADMIN"]),
     async (req,res)=>{
       try{
