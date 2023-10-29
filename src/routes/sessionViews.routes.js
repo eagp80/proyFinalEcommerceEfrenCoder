@@ -55,7 +55,7 @@ class SessionViewsRoutes {
 
     this.router.get(`${this.path}profile`,
     [passportCall("jwt"), 
-    handlePolicies(["USER", "ADMIN", "GOLD", "SILVER", "BRONCE"])], 
+    handlePolicies(["USER", "ADMIN", "PREMIUM"])], 
     async (req, res) =>{
       try{
         const user = req.session.user?._doc || req.user.user|| "usuario no logueado";

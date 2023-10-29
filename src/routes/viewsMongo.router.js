@@ -32,7 +32,7 @@ class ViewsMongoRoutes {
 
     this.router.get(`${this.path}/carts`, 
     [passportCall("jwt"), 
-    handlePolicies(["USER", "ADMIN", "GOLD", "SILVER", "BRONCE"])],
+    handlePolicies(["USER", "ADMIN", "PREMIUM"])],
      async (req, res) => {
       // let courses = [];
       let i = 0;
@@ -67,7 +67,7 @@ class ViewsMongoRoutes {
     
     this.router.get(`${this.path}/carts/:cid`, 
     [passportCall("jwt"), 
-    handlePolicies(["USER", "PREMIUM","ADMIN", "GOLD", "SILVER", "BRONCE"])],
+    handlePolicies(["USER", "PREMIUM","ADMIN"])],
      async (req, res) => {
       try {
         // TODO: HACER VALIDACIONES *
@@ -123,7 +123,7 @@ class ViewsMongoRoutes {
    //******************************************************************************* */
     this.router.get(`${this.path}/products`,
     [passportCall("jwt"), 
-    handlePolicies(["USER", "ADMIN", "PREMIUM","GOLD", "SILVER", "BRONCE"])], 
+    handlePolicies(["USER", "ADMIN", "PREMIUM"])], 
     async (req, res) => {//
       try {
         //obtener el carrito asosiado al usuario y ponerselo en linea 132s a CartOwn

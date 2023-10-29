@@ -30,14 +30,14 @@ class SessionRoutes {//no es un Router pero adentro tiene uno
 
   initSessionRoutes() {
     this.router.get(`${this.path}/current`, 
-    [passportCall("jwt"), handlePolicies(["USER","ADMIN"])],
+    [passportCall("jwt"), handlePolicies(["USER","ADMIN","PREMIUM"])],
     async (req, res) =>{
       return res.send(req.user);
     });
 
     this.router.get(`${this.path}/current/:uid`, 
     [passportCall("jwt"), 
-    handlePolicies(["USER", "ADMIN", "GOLD", "SILVER", "BRONCE"])],
+    handlePolicies(["USER", "ADMIN", "PREMIUM"])],
     async (req, res) =>{
       try{
         const { uid } = req.params;
